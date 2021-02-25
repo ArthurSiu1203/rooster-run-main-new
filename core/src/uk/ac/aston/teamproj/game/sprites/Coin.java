@@ -25,7 +25,7 @@ public class Coin extends InteractiveTileObjectCircular {
 	
 	@Override
 	public void onHit() {
-		Gdx.app.log(String.valueOf(PlayScreen.clientID), "Coin Collision");
+		Gdx.app.log(String.valueOf(PlayScreen.clientID), "Coin Collision test");
 	   	Sound sound = Gdx.audio.newSound(Gdx.files.internal("coin.wav"));
         sound.play(1F);
 		//set category to destroyed bit
