@@ -62,7 +62,7 @@ public class Hud implements Disposable {
 //	private Label livesFixedLabel;
 	private Label livesLabel;
 	
-	public Hud(SpriteBatch sb) {
+	public Hud(SpriteBatch sb, String name) {
 		
 		
 		coinTexture = new Texture("new_graphics/coin.png");
@@ -100,7 +100,7 @@ public class Hud implements Disposable {
 		livesLabel = new Label(String.format("\t%01d", lives), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
 		playerFixedLabel = new Label("\tPLAYERS: ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		nameFixedLabel = new Label("\tPlayer 1: ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		nameFixedLabel = new Label("\t" + name + ": ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		scoreFixedLabel = new Label("\tSCORE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 //		coinsFixedLabel = new Label("COINS", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 //		livesFixedLabel = new Label("\tLIVES", new Label.LabelStyle(new BitmapFont(), Color.WHITE));

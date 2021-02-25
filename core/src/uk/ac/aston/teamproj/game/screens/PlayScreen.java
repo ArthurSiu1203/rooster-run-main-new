@@ -77,8 +77,10 @@ public class PlayScreen implements Screen {
 	private HashMap<Bomb, Float> toExplode = new HashMap<>();
 	
 	public static int score;
+	private String name;
 	
-	public PlayScreen(MainGame game, int clientID, String mapPath) {
+	public PlayScreen(MainGame game, int clientID, String mapPath, String name) {
+		this.name = name;
 		this.game = game;
 		PlayScreen.clientID = clientID;
 		this.atlas = new TextureAtlas("new_sprite_sheet/new_chicken.pack");
@@ -90,7 +92,7 @@ public class PlayScreen implements Screen {
 		gamePort = new FitViewport(MainGame.V_WIDTH / MainGame.PPM, MainGame.V_HEIGHT / MainGame.PPM, gamecam);
 
 		// Create our game HUD for scores /timers/level info/players in the game etc
-		hud = new Hud(game.batch);
+		hud = new Hud(game.batch, name);
 		hud2 = new Hud2(game.batch);
 
 		// Load our map and setup our map renderer
