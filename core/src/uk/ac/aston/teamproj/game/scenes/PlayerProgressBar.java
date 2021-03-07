@@ -17,7 +17,7 @@ import uk.ac.aston.teamproj.game.screens.PlayScreen;
 
 public class PlayerProgressBar implements Disposable {
 	
-	private static final float MAP_SIZE = 500;
+	private static final float MAP_SIZE = 380;
 	private static final float BAR_WIDTH = 400;
 	private static final float BAR_HEIGHT = 32;
 	private static final float PLAYER_RADIUS = 30;

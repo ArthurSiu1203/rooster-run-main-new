@@ -86,7 +86,7 @@ public class WorldContactListener implements ContactListener {
 				case (MainGame.ROOSTER_BIT | MainGame.PLANE_BIT):
 					PlayScreen.player.onFinish();
 					
-					Fixture PlaneFixture = (fixA.getFilterData().categoryBits == MainGame.PLANE_BIT)? fixA : fixB;
+					Fixture PlaneFixture = (fixA.getFilterData().categoryBits == MainGame.PLANE_BIT) ? fixA : fixB;
 					((EndPlane) PlaneFixture.getUserData()).onHit();
 					break;
 				

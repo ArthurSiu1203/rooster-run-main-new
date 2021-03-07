@@ -38,7 +38,7 @@ import uk.ac.aston.teamproj.game.tools.WorldContactListener;
 public class PlayScreen implements Screen {
 
 	private static final int SCORE_LOC = 400 * 6; // increment score every 400 units
-	private static final String DEFAULT_MAP_PATH = "map_beginner_fix";
+	private static final String DEFAULT_MAP_PATH = "map_beginner_fix_new";
 
 	private MainGame game;
 	private TextureAtlas atlas; // sprite sheet that wraps all images
@@ -77,6 +77,8 @@ public class PlayScreen implements Screen {
 	
 	private final PlayerProgressBar progressBar;
 
+	private String name;
+	
 	public PlayScreen(MainGame game, int clientID, String mapPath, String name) {
 		this.name = name;
 		this.game = game;
