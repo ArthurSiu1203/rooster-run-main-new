@@ -30,7 +30,9 @@ public class LoadingScreen implements Screen {
     private Viewport viewport;
     private Texture background;
     
-    public LoadingScreen(Game game, int clientID, String mapPath) {
+    private String name;
+    
+    public LoadingScreen(Game game, int clientID, String mapPath, String name) {
         mGame = (MainGame) game;
         batch = mGame.batch;
         bf_loadProgress = new BitmapFont();
@@ -43,6 +45,8 @@ public class LoadingScreen implements Screen {
         background = new Texture("buttons/multiplayer_menu_bg.jpg");   
         
         startTime = System.currentTimeMillis();
+        
+        this.name = name;
     }
 
     @Override
@@ -81,7 +85,7 @@ public class LoadingScreen implements Screen {
      * Move to play screen after progress reaches 100%
      */
     private void moveToPlayScreen() {
-        mGame.setScreen(new PlayScreen(mGame, clientID, mapPath));
+        mGame.setScreen(new PlayScreen(mGame, clientID, mapPath, name));
         dispose();
     }
 

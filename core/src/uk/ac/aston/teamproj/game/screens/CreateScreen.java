@@ -81,7 +81,7 @@ public class CreateScreen implements Screen {
 		
 		mapsImages[0] = new Texture("easymap.png");
 		mapsImages[1] = new Texture("hardmap.png");
-		mapsPaths[0] = "map_beginner_fix";
+		mapsPaths[0] = "map_beginner_fix_new";
 		mapsPaths[1] = "map_hard";
 	}
 	

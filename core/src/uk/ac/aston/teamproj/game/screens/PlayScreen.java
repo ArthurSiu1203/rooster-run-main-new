@@ -38,7 +38,7 @@ import uk.ac.aston.teamproj.game.tools.WorldContactListener;
 public class PlayScreen implements Screen {
 
 	private static final int SCORE_LOC = 400 * 6; // increment score every 400 units
-	private static final String DEFAULT_MAP_PATH = "map_beginner_fix";
+	private static final String DEFAULT_MAP_PATH = "map_beginner_fix_new";
 
 	private MainGame game;
 	private TextureAtlas atlas; // sprite sheet that wraps all images
@@ -71,14 +71,17 @@ public class PlayScreen implements Screen {
 	// multiplayer
 	public static int clientID;
 	private HashMap<Bomb, Float> toExplode = new HashMap<>();
-	
-	//Stats
-	
+
+	public static int score;
+
 	public static int coins;
 	
 	private final PlayerProgressBar progressBar;
+
+	private String name;
 	
-	public PlayScreen(MainGame game, int clientID, String mapPath) {
+	public PlayScreen(MainGame game, int clientID, String mapPath, String name) {
+		this.name = name;
 		this.game = game;
 		PlayScreen.clientID = clientID;
 		this.atlas = new TextureAtlas("new_sprite_sheet/new_chicken.pack");
@@ -90,7 +93,7 @@ public class PlayScreen implements Screen {
 		gamePort = new FitViewport(MainGame.V_WIDTH / MainGame.PPM, MainGame.V_HEIGHT / MainGame.PPM, gamecam);
 
 		// Create our game HUD for scores /timers/level info/players in the game etc
-		hud = new Hud(game.batch);
+		hud = new Hud(game.batch, name);
 		hud2 = new Hud2(game.batch);
 		progressBar = new PlayerProgressBar(game.batch);
 
@@ -327,9 +330,9 @@ public class PlayScreen implements Screen {
 
 //		game.batch.setProjectionMatrix(hud2.stage.getCamera().combined);
 //		hud2.stage.draw();
-		
+
 		progressBar.draw();
-		
+
 		if (gameOver()) {
 			game.setScreen(new GameOverScreen(game));
 			dispose();

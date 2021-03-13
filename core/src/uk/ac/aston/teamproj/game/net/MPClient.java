@@ -21,17 +21,17 @@ public class MPClient {
 	public static Client client;
 	public MainGame game;
 	private String name;
-	
+
 	private String mapPath;
 
 	public MPClient(String ip, String name, MainGame game) {
 		this.name = name;
 		client = new Client();
 		client.start();
-		
+
 		Network.register(client);
 
-		
+
 
 		client.addListener(new ThreadedListener(new Listener() {
 			// What to do with the packets.
@@ -43,18 +43,18 @@ public class MPClient {
 
 				if (object instanceof ChosenMap) {
 					ChosenMap packet = (ChosenMap) object;
-					mapPath = packet.path;					
+					mapPath = packet.path;
 				}
-				
+
 				if(object instanceof Movement) {
 					Movement packet = (Movement) object;
-					
+
 					if(packet.clientID == 0) {
-						
+
 						Body body = PlayScreen.player.b2body;
 						float forceX = 0.8f; // replace with packet.impulse
 						float forceY = body.getLinearVelocity().y;
-						
+
 						switch(packet.direction) {
 						case 0:
 							forceX *= -1;
@@ -67,13 +67,13 @@ public class MPClient {
 							break;
 						}
 	                    body.setLinearVelocity(forceX, forceY);
-	                    
+
 					} else {
-						
+
 						Body body = PlayScreen.player2.b2body;
 						float forceX = 0.8f; // replace with packet.impulse
 						float forceY = body.getLinearVelocity().y;
-						
+
 						switch(packet.direction) {
 						case 0:
 							forceX *= -1;
@@ -89,17 +89,17 @@ public class MPClient {
 
 					}
 				}
-				
+
 			}
 
 		}));
-		
+
 		try {
 			client.connect(50000, ip, Network.TCP_PORT, Network.UDP_PORT);
 			requestLogin();
 			//TimeUnit.SECONDS.sleep(10);
-			game.setScreen(new LoadingScreen(game, client.getID(), mapPath));
-			
+			game.setScreen(new LoadingScreen(game, client.getID(), mapPath, name));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
